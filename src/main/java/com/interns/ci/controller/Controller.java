@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @GetMapping("controller/hello")
-    public String sayHellow(){
-        return "Hello from Rest Controller from Heroku";
+    public String sayHello(){
+        return "Hello from Rest Controller from Heroku CI Flowß";
     }
 }
