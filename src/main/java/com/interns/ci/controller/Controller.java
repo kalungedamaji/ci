@@ -8,6 +8,6 @@ public class Controller {
 
     @GetMapping("controller/hello")
     public String sayHello(){
-        return "Hello from Rest Controller from Heroku CI Flowß";
+        return "Hello from Rest Controller from Heroku CI Flow";
     }
 }
