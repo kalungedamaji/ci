@@ -8,6 +8,6 @@ public class Controller {
 
     @GetMapping("controller/hello")
     public String sayHellow(){
-        return "Hello from Rest Controller";
+        return "Hello from Rest Controller from Heroku";
     }
 }
