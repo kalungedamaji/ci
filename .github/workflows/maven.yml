@@ -31,8 +31,8 @@ jobs:
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
         # This will be used for authentication. You can find it in your heroku homepage account settings
-        heroku_api_key: eef2749f-7701-4808-8a8d-b32979d95ab8
+        heroku_api_key: ${{secretes.HEROKU_API_KEY}}
         # Email that you use with heroku
-        heroku_email: kalungedamaji1137@gmail.com
+        heroku_email: ${{secretes.HEROKU_EMAIL}}
         # The appname to use for deploying/updating
-        heroku_app_name: spring1-boot-app
+        heroku_app_name: ${{secretes.HEROKU_APP_NAME}}
