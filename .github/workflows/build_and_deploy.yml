@@ -27,7 +27,7 @@ jobs:
   deployment:
     name: Deploy to DEV ENV
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [test]
     steps:
      - uses: AkhileshNS/heroku-deploy@v3.12.12
      - name: copy artifacts to the Heroku
