@@ -31,6 +31,7 @@ jobs:
    steps:
    - uses: AkhileshNS/heroku-deploy@v3.12.12
    - name: Deploy to DEV ENV
+    run: mvn -B package --file pom.xml
      with:
         # This will be used for authentication. You can find it in your heroku homepage account settings
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
