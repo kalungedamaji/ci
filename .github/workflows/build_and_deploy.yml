@@ -28,7 +28,6 @@
       needs: [testAndBuild]
       steps:
         - name: copy artifacts to the Heroku
-          run: git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
           uses: AkhileshNS/heroku-deploy@master
           with:
             # This will be used for authentication. You can find it in your heroku homepage account settings
@@ -37,4 +36,8 @@
             heroku_email: ${{secrets.HEROKU_EMAIL}}
             # The appname to use for deploying/updating
             heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+        - run: |
+            git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
+            git remote add heroku-dev git@heroku.com:dear-genie-dev.git
+            git push heroku-dev HEAD:master   
 
