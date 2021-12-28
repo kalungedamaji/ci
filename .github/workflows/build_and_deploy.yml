@@ -28,7 +28,7 @@
       needs: [testAndBuild]
       steps:
         - name: set username and email
-        - run: git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
+          run: git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
         - name: copy artifacts to the Heroku
           uses: AkhileshNS/heroku-deploy@master
           with:
