@@ -26,4 +26,15 @@
       name: Deploy to DEV ENV
       runs-on: ubuntu-latest
       needs: [testAndBuild]
+      steps:
+        - uses: AkhileshNS/heroku-deploy@v3.12.12
+        - name: copy artifacts to the Heroku
+          run: mvn -B package --file pom.xml
+          with:
+            # This will be used for authentication. You can find it in your heroku homepage account settings
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            # Email that you use with heroku
+            heroku_email: ${{secrets.HEROKU_EMAIL}}
+            # The appname to use for deploying/updating
+            heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
 
