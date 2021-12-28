@@ -43,6 +43,7 @@
 
     deploymentToStage:
       name: Deploy to Stage ENV
+      if: github.event_name != 'pull_request'
       runs-on: ubuntu-latest
       needs: [deploymentToDEV]
       environment: spring1-boot-app-stage
@@ -63,6 +64,7 @@
 
     deploymentToProduction:
         name: Deploy to Stage ENV
+        if: github.event_name != 'pull_request'
         runs-on: ubuntu-latest
         needs: [ deploymentToStage ]
         environment: spring1-boot-app-production
