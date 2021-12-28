@@ -64,7 +64,7 @@
     deploymentToProduction:
         name: Deploy to Stage ENV
         runs-on: ubuntu-latest
-        needs: [ deploymentToDEV ]
+        needs: [ deploymentToStage ]
         environment: spring1-boot-app-production
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
