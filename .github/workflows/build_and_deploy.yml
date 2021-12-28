@@ -27,9 +27,8 @@
       runs-on: ubuntu-latest
       needs: [testAndBuild]
       steps:
-        - name: set username and email
-          run: git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
         - name: copy artifacts to the Heroku
+          run: git config user.name "damaji" && git config user.email "kalungedamaji1137@gmail.com"
           uses: AkhileshNS/heroku-deploy@master
           with:
             # This will be used for authentication. You can find it in your heroku homepage account settings
