@@ -41,4 +41,4 @@
             echo Jar Name : ${{needs.build.outputs.jar_version}}
       - name: Docker Build
         run: |
-              docker build  -t ${{needs.build.outputs.jar_version}} .
+              docker build  -t  ci-0.0.1-release.jar .
