@@ -44,5 +44,5 @@
          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
               docker tag ci-0.0.1-release.jar registry.heroku.com/spring1-boot-app-dev/latest
-              docker push registry.heroku.com registry.heroku.com/spring1-boot-app-dev/latest
+              docker push  registry.heroku.com/spring1-boot-app-dev/latest
 
