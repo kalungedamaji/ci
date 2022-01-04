@@ -38,4 +38,4 @@
           path: target/
       - name: Docker Build
         run: |
-              docker build . -t shayki/shayki-maven:${{needs.build.outputs.jar_version}}
+              docker build . -t ${{needs.build.outputs.jar_version}}
