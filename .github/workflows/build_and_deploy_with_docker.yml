@@ -36,9 +36,13 @@
         with:
           name: jar-artifact
           path: target/
-      - name: print jar name
-        run: |
-            echo Jar Name : ${{needs.testAndBuild.outputs.jar_version}}
-      - name: Docker Build
+      - name: build docker Image
         run: |
               docker build  -t  ci-0.0.1-release.jar .
+      - name: tag and push docker Image to Heroku container
+        env:
+         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+              docker tag ci-0.0.1-release.jar registry.heroku.com/spring1-boot-app-dev/latest
+              docker push registry.heroku.com registry.heroku.com/spring1-boot-app-dev/latest
+
