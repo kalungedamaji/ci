@@ -37,5 +37,5 @@
           name: jar-artifact
           path: target/
       - name: Docker Build
-      - run: |
+        run: |
               docker build . -t shayki/shayki-maven:${{needs.build.outputs.jar_version}}
