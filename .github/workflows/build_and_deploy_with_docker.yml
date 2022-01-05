@@ -36,26 +36,12 @@
         - name: Print Version
           run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
       outputs:
-        jar_version: ci-0.0.1-release.jar
+        jar_name: ci-0.0.1-release.jar
 
-    deploy:
-      runs-on: ubuntu-latest
+    docker:
       needs: [testAndBuild]
-      steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
-        with:
-          name: jar-artifact
-          path: target/
-      - name: build docker Image
-        run: |
-              docker build  -t  ${{needs.testAndBuild.outputs.jar_version}} .
-      - name: tag and push docker Image to Heroku container
-        env:
-         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-              docker login --username=kalungedamaji1137@gmail.com --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
-              docker tag ci-0.0.1-release.jar registry.heroku.com/spring1-boot-app-dev/web
-              docker push  registry.heroku.com/spring1-boot-app-dev/web
-              heroku container:release web -a spring1-boot-app-dev
-
+      uses: kalungedamaji/c/.github/workflows/create_docker_image_deploy.yml@main
+      with:
+        jarName: ${{ needs.testAndBuild.output.jar_name }}
+      secrets:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
