@@ -30,7 +30,7 @@
             retention-days: 1
         - name: oupt put
           run: |
-          echo "${{ steps.build.output }}"
+             echo "${{ steps.build.output }}"
       outputs:
         jar_version: ci-0.0.1-release.jar
 
