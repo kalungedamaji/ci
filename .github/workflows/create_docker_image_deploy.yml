@@ -11,6 +11,8 @@ on:
         secrets:
           HEROKU_API_KEY:
             required: true
+          HEROKU_USER_NAME:
+            required: true
 jobs:
 
   deploy:
@@ -28,7 +30,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          docker login --username=kalungedamaji1137@gmail.com --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+          docker login --username=${{ secrets.HEROKU_USER_NAME }} --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
           docker tag ci-0.0.1-release.jar registry.heroku.com/spring1-boot-app-dev/web
           docker push  registry.heroku.com/spring1-boot-app-dev/web
           heroku container:release web -a spring1-boot-app-dev
