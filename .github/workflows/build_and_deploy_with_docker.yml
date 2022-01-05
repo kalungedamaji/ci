@@ -20,6 +20,7 @@
             distribution: 'adopt'
             cache: maven
         - name: Build with Maven
+          id: build
           run: mvn -B package --file pom.xml
         - name: Temporarily save jar artifact
           uses: actions/upload-artifact@v2
@@ -27,6 +28,8 @@
             name: jar-artifact
             path: ${{ github.workspace }}/target/*.jar
             retention-days: 1
+         - name: oupt put
+           run: echo ${{ steps.build.output }}
       outputs:
         jar_version: ci-0.0.1-release.jar
 
