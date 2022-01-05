@@ -28,9 +28,14 @@
             name: jar-artifact
             path: ${{ github.workspace }}/target/*.jar
             retention-days: 1
-        - name: oupt put
-          run: |
-             echo "${{ steps.build.output }}"
+        - name: Bump Version
+          id: bump
+          uses: nnichols/maven-version-bump-action@v3
+          with:
+             github-token: ${{ secrets.github_token }}
+
+        - name: Print Version
+          run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
       outputs:
         jar_version: ci-0.0.1-release.jar
 
