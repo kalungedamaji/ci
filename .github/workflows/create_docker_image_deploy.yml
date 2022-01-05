@@ -1,4 +1,4 @@
-name:  Create and deploy docer image
+name:  Create and deploy docker image
 on:
     workflow_call:
         inputs:
