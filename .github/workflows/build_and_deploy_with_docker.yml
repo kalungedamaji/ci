@@ -40,7 +40,7 @@
 
     docker:
       needs: [testAndBuild]
-      uses: kalungedamaji/ci/.github/workflows/create_docker_image_deploy.yml@main
+      uses: kalungedamaji/ci/.github/workflows/create_docker_image_deploy.yml@master
       with:
         jarName: ${{ needs.testAndBuild.output.jar_name }}
       secrets:
