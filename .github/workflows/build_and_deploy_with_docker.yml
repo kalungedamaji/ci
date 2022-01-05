@@ -29,7 +29,8 @@
             path: ${{ github.workspace }}/target/*.jar
             retention-days: 1
         - name: oupt put
-          run: echo ${{ steps.build.output }}
+          run: |
+          echo "${{ steps.build.output }}"
       outputs:
         jar_version: ci-0.0.1-release.jar
 
