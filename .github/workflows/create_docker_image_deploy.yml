@@ -23,7 +23,7 @@ jobs:
           path: target/
       - name: build docker Image
         run: |
-          docker build  -t  ci-0.0.1-release.jar  .
+          docker build  -t   ${{ inputs.jarName }}  .
       - name: tag and push docker Image to Heroku container
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
