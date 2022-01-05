@@ -42,6 +42,6 @@
       needs: [testAndBuild]
       uses: kalungedamaji/ci/.github/workflows/create_docker_image_deploy.yml@master
       with:
-        jarName: ci-0.0.1-release.jar
+        jarName: ${{needs.testAndBuild.outputs.jar_name}}
       secrets:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
