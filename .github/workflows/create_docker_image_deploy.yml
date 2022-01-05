@@ -1,0 +1,34 @@
+name:  Create and deploy docer image
+on:
+    workflow_call:
+        inputs:
+          jarName:
+              required: true
+              type: string
+          tag:
+            required: false
+            type: string
+        secrets:
+          HEROKU_API_KEY:
+            required: true
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v1
+        with:
+          name: jar-artifact
+          path: target/
+      - name: build docker Image
+        run: |
+          docker build  -t  ${{inputs.jarName}} .
+      - name: tag and push docker Image to Heroku container
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          docker login --username=kalungedamaji1137@gmail.com --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+          docker tag ci-0.0.1-release.jar registry.heroku.com/spring1-boot-app-dev/web
+          docker push  registry.heroku.com/spring1-boot-app-dev/web
+          heroku container:release web -a spring1-boot-app-dev
