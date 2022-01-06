@@ -1,5 +1,6 @@
 name:  Create and deploy docker image
 on:
+    workflow_dispatch:
     workflow_call:
         inputs:
           jarName:
